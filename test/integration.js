@@ -40,29 +40,29 @@ function mkTestRows(opts) {
   for (let i = 0; i < TEST_NUM_ROWS; ++i) {
     rows.push({
       name: 'apples',
-      quantity: 10n,
+      quantity: 10,
       price: 2.6,
       day: new Date('2017-11-26'),
       date: new Date(TEST_VTIME + 1000 * i),
       finger: "FNORD",
       inter: { months: 42, days: 23, milliseconds: 777 },
       stock: [
-        { quantity: 10n, warehouse: "A" },
-        { quantity: 20n, warehouse: "B" }
+        { quantity: 10, warehouse: "A" },
+        { quantity: 20, warehouse: "B" }
       ],
       colour: [ 'green', 'red' ]
     });
 
     rows.push({
       name: 'oranges',
-      quantity: 20n,
+      quantity: 20,
       price: 2.7,
       day: new Date('2017-11-26'),
       date: new Date(TEST_VTIME + 2000 * i),
       finger: "FNORD",
       inter: { months: 42, days: 23, milliseconds: 777 },
       stock: {
-        quantity: [50n, 33n],
+        quantity: [50, 33],
         warehouse: "X"
       },
       colour: [ 'orange' ]
@@ -77,8 +77,8 @@ function mkTestRows(opts) {
       finger: "FNORD",
       inter: { months: 42, days: 23, milliseconds: 777 },
       stock: [
-        { quantity: 42n, warehouse: "f" },
-        { quantity: 20n, warehouse: "x" }
+        { quantity: 42, warehouse: "f" },
+        { quantity: 20, warehouse: "x" }
       ],
       colour: [ 'green', 'brown' ],
       meta_json: { expected_ship_date: TEST_VTIME }
@@ -286,29 +286,29 @@ async function readTestFile() {
     for (let i = 0; i < TEST_NUM_ROWS; ++i) {
       assert.deepEqual(await cursor.next(), {
         name: 'apples',
-        quantity: 10n,
+        quantity: 10,
         price: 2.6,
         day: new Date('2017-11-26'),
         date: new Date(TEST_VTIME + 1000 * i),
         finger: Buffer.from("FNORD"),
         inter: { months: 42, days: 23, milliseconds: 777 },
         stock: [
-          { quantity: [10n], warehouse: "A" },
-          { quantity: [20n], warehouse: "B" }
+          { quantity: [10], warehouse: "A" },
+          { quantity: [20], warehouse: "B" }
         ],
         colour: [ 'green', 'red' ]
       });
 
       assert.deepEqual(await cursor.next(), {
         name: 'oranges',
-        quantity: 20n,
+        quantity: 20,
         price: 2.7,
         day: new Date('2017-11-26'),
         date: new Date(TEST_VTIME + 2000 * i),
         finger: Buffer.from("FNORD"),
         inter: { months: 42, days: 23, milliseconds: 777 },
         stock: [
-          { quantity: [50n, 33n], warehouse: "X" }
+          { quantity: [50, 33], warehouse: "X" }
         ],
         colour: [ 'orange' ]
       });
@@ -321,8 +321,8 @@ async function readTestFile() {
         finger: Buffer.from("FNORD"),
         inter: { months: 42, days: 23, milliseconds: 777 },
         stock: [
-          { quantity: [42n], warehouse: "f" },
-          { quantity: [20n], warehouse: "x" }
+          { quantity: [42], warehouse: "f" },
+          { quantity: [20], warehouse: "x" }
         ],
         colour: [ 'green', 'brown' ],
         meta_json: { expected_ship_date: TEST_VTIME }
@@ -358,8 +358,8 @@ async function readTestFile() {
   {
     let cursor = reader.getCursor(['name', 'quantity']);
     for (let i = 0; i < TEST_NUM_ROWS; ++i) {
-      assert.deepEqual(await cursor.next(), { name: 'apples', quantity: 10n });
-      assert.deepEqual(await cursor.next(), { name: 'oranges', quantity: 20n });
+      assert.deepEqual(await cursor.next(), { name: 'apples', quantity: 10 });
+      assert.deepEqual(await cursor.next(), { name: 'oranges', quantity: 20 });
       assert.deepEqual(await cursor.next(), { name: 'kiwi' });
       assert.deepEqual(await cursor.next(), { name: 'banana' });
     }

@@ -60,12 +60,12 @@ describe('list', async function() {
   let reader;
   const row1 = {
     id: 'Row1',
-    test: {list: [{element: {a:'test1', b:1n}}, {element: { a: 'test2', b: 2n}}, {element: {a: 'test3', b: 3n}}]}
+    test: {list: [{element: {a:'test1', b:1}}, {element: { a: 'test2', b: 2}}, {element: {a: 'test3', b: 3}}]}
   };
 
   const row2 = {
     id: 'Row2',
-    test: {list: [{element: {a:'test4', b:4n}}]}
+    test: {list: [{element: {a:'test4', b:4}}]}
   };
 
   before(async function(){
